@@ -4,7 +4,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import unittest
-from app import app
+from api.app import app
 
 
 class TestApp(unittest.TestCase):
