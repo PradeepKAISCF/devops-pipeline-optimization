@@ -1,5 +1,11 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import unittest
 from app import app
+
 
 class TestApp(unittest.TestCase):
 
@@ -8,7 +14,8 @@ class TestApp(unittest.TestCase):
 
     def test_home(self):
         response = self.client.get("/")
-        self.assertEqual(response.status_code, 200)
+        assert response.status_code == 200
+
 
 if __name__ == "__main__":
     unittest.main()
