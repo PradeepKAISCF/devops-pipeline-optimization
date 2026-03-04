@@ -1,4 +1,5 @@
 from flask import Flask
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 
 app = Flask(__name__)
 
@@ -10,5 +11,5 @@ def home():
 def health():
     return {"status": "ok"}
 
-# Vercel requires this
-handler = app
+# Vercel requires this export
+app = DispatcherMiddleware(app)
