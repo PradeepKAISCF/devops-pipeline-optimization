@@ -16,7 +16,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.11
+        python-version: "3.11"
 
     - name: Install Dependencies
       run: |
@@ -24,9 +24,12 @@ jobs:
         pip install pytest flake8
 
     - name: Lint Code
-      run: |
-        flake8 .
+      run: flake8 .
 
     - name: Run Tests
-      run: |
-        pytest
+      run: pytest
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
